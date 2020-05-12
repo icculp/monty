@@ -5,7 +5,6 @@
  * @h: dlistint_t head
  * Return: number of elements in dlistin_t
  */
-
 size_t print_dlistint(const dlistint_t *h)
 {
 	int i = 0;
@@ -15,6 +14,32 @@ size_t print_dlistint(const dlistint_t *h)
 		printf("%d\n", h->n);
 	}
 	return (i);
+}
+
+/**
+ * add_dnodeint - add node at beginning of dlist
+ * @head: head of dlist
+ * @n: data of each node
+ * Return: address of new element or NULL
+ */
+dlistint_t *add_dnodeint(dlistint_t **head, const int n)
+{
+	dlistint_t *new;
+
+	new = malloc(sizeof(dlistint_t));
+	if (!new)
+		return (NULL);
+
+	new->n = n;
+	new->next = (*head);
+	new->prev = NULL;
+
+	if ((*head) != NULL)
+		(*head)->prev = new;
+
+	(*head) = new;
+
+	return (new);
 }
 
 /**
@@ -57,7 +82,6 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
  * @n: data for new node
  * Return: address to the new dnodeint or NULL on failure
  */
-
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	unsigned int i;
@@ -92,4 +116,21 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		}
 	free(new);
 	return (NULL);
+}
+
+/**
+ * free_dlistint - frees a dlist
+ * @head: head of dlist
+ * Return: void
+ */
+void free_dlistint(dlistint_t *head)
+{
+	dlistint_t *end;
+
+	while (head != NULL)
+	{
+		end = head;
+		head = head->next;
+		free(end);
+	}
 }
