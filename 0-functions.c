@@ -10,7 +10,7 @@ void push(void)
 	int a;
 
 	a = atoi(margs[1]);
-	add_dnodeint_end(stack, a);
+	add_dnodeint_end(&stack, a);
 }
 
 /**
@@ -25,7 +25,7 @@ void pall(void)
 		temp = temp->next;
 	while (temp != NULL)
 	{
-		printf("%s\n", temp->n);
+		printf("%d\n", temp->n);
 		temp = temp->prev;
 	}
 }

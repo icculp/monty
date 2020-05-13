@@ -22,8 +22,8 @@ typedef struct stack_s
 
 extern char **margs;
 extern char *buff;
-extern int fd, line; 
-extern stack_t stack;
+extern int fd, line, len;
+extern stack_t *stack;
 extern int linenumber;
 
 /**
@@ -39,6 +39,6 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-extern instruction_t *op;
+/**extern instruction_t *op;*/
 
 #endif
