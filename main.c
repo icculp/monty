@@ -1,5 +1,28 @@
 #include "monty.h"
-#include "variables.h"
+
+char **margs;
+char *buff;
+size_t len;
+stack_t *stack;
+unsigned int linenumber = 1;
+int line;
+FILE *fd;
+instruction_t op[] = {
+	{"push", push},
+	{"pall", pall},
+	{"pint", pint},
+	{"pop", pop},
+	{"swap", swap},
+	{"add", add},
+	{"nop", nop},
+	{"sub", sub},
+	{"div", div_s},
+	{"mul", mul},
+	{"mod", mod},
+	{"pchar", pchar},
+	{"pstr", pstr},
+	{NULL, NULL}
+	};
 
 /**
 * main - Main file of monty interpreter program
@@ -12,19 +35,9 @@ int main(int ac, char **av)
 {
 	int mi = 0, opi = 0;
 	char *tok;
-	char **margs = malloc(sizeof(char *));
-	char *buff;
-	size_t len;
-	stack_t *stack = malloc(sizeof(stack_t));
-	unsigned int linenumber = 1;
-	int line;
-	FILE *fd;
-	instruction_t op[] = {
-	{"push", push},
-	{"pall", pall},
-	{NULL, NULL}
-	};
 
+	margs = malloc(sizeof(char *));
+	stack = malloc(sizeof(stack_t));
 	if (margs == NULL || stack == NULL)
 	{
 		dprintf(2, "Error: malloc failed\n");
@@ -43,17 +56,28 @@ int main(int ac, char **av)
 	}
 	while ((line = getline(&buff, &len, fd)) != -1)
 	{
-		mi = 0;
+		mi = opi = 0;
 		buff[strlen(buff) - 1] = '\0';
-		while((tok = strtok(buff, " ")) != NULL);
+		tok = strtok(buff, " ");
+		if (tok[0] == '#')
 		{
-			margs[mi++] = strdup(tok);
+			linenumber++;
+			continue;
+		}
+		while (tok != NULL)
+		{
+			margs[mi] = tok;
+			tok = strtok(NULL, " ");
+			mi++;
 		}
 		margs[mi] = NULL;
 		while (op[opi].opcode != NULL)
 		{
 			if (strcmp(margs[0], op[opi].opcode) == 0)
+			{
 				op[opi].f(&stack, linenumber);
+				break;
+			}
 			opi++;
 			if (op[opi].opcode == NULL)
 			{
@@ -65,5 +89,5 @@ int main(int ac, char **av)
 	}
 	free(buff);
 	free(margs);
-	return(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -1,8 +1,9 @@
 #include "monty.h"
-#include "variables.h"
 
 /**
-*
+* push - Adds values to top of the stack
+* @stack: Head of stack
+* @linenumber: Line number of monty file
 */
 
 void push(stack_t **stack, unsigned int linenumber)
@@ -16,6 +17,8 @@ void push(stack_t **stack, unsigned int linenumber)
 
 /**
 * pall - Prints all the values on the stack, starting from the top
+* @stack: Head of stack
+* @linenumber: Line number of monty file
 */
 
 void pall(stack_t **stack, unsigned int linenumber)
@@ -25,7 +28,7 @@ void pall(stack_t **stack, unsigned int linenumber)
 	(void)linenumber;
 	while (temp->next != NULL)
 		temp = temp->next;
-	while (temp != NULL)
+	while (temp->prev != NULL)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->prev;
