@@ -5,9 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef STACK
-#define STACK
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -19,11 +16,35 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
-#endif
+
+/**
+ * struct instruction_s - opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct instruction_s
+{
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
+
+/** Global variables */
+extern char **margs;
+extern char *buff;
+extern size_t len;
+extern stack_t *stack;
+extern unsigned int linenumber;
+extern int line;
+extern FILE *fd;
+extern instruction_t op[];
 
 /** dlisthelper.c */
 size_t print_dlistint(const stack_t *h);
@@ -41,5 +62,39 @@ int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 /** 0-functions.c */
 void push(stack_t **stack, unsigned int linenumber);
 void pall(stack_t **stack, unsigned int linenumber);
+
+/** 1-functions.c */
+void pint(stack_t **stack, unsigned int linenumber);
+
+/** 2-functions.c */
+void pop(stack_t **stack, unsigned int linenumber);
+
+/** 3-functions.c */
+void swap(stack_t **stack, unsigned int linenumber);
+
+/** 4-functions.c */
+void add(stack_t **stack, unsigned int linenumber);
+
+/** 5-functions.c */
+void nop(stack_t **stack, unsigned int linenumber);
+
+/** 6-functions.c */
+void sub(stack_t **stack, unsigned int linenumber);
+
+/** 7-functions.c */
+void div_s(stack_t **stack, unsigned int linenumber);
+
+/** 8-functions.c */
+void mul(stack_t **stack, unsigned int linenumber);
+
+/** 9-functions.c */
+void mod(stack_t **stack, unsigned int linenumber);
+
+/** 11-functions.c */
+void pchar(stack_t **stack, unsigned int linenumber);
+
+/** 12-functions.c */
+void pstr(stack_t **stack, unsigned int linenumber);
+
 
 #endif

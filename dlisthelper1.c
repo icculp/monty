@@ -1,5 +1,4 @@
 #include "monty.h"
-#include "variables.h"
 
 /**
  * dlistint_len - returns the length of a dlistint list

@@ -51,27 +51,27 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 
 stack_t *add_dnodeint_end(stack_t **head, const int n)
 {
-	stack_t *new, *end;
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *temp;
+
+	if (head == NULL || new == NULL)
 		return (NULL);
 	new->n = n;
-	new->next = NULL;
-	if (*head != NULL)
+	if (*head == NULL)
 	{
-		end = *head;
-		while (end->next != NULL)
-		{
-			end = end->next;
-		}
-		end->next = new;
-		new->prev = end;
-	}
-	else
-	{
-		new->prev = NULL;
 		*head = new;
+		new->prev = NULL;
+		new->next = NULL;
+		return (new);
 	}
+	temp = *head;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = new;
+	new->prev = temp;
+	new->next = NULL;
 	return (new);
 }
 
