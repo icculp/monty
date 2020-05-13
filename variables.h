@@ -1,6 +1,8 @@
 #ifndef VARS_H
 #define VARS_h
 
+#ifndef STACK
+#define STACK
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -16,6 +18,7 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
+#endif
 
 extern char **margs;
 extern char *buff;

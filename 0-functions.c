@@ -9,8 +9,8 @@ void push(void)
 {
 	int a;
 
-	a = atoi(args[1])
-	
+	a = atoi(margs[1]);
+	add_dnodeint_end(stack, a);
 }
 
 /**

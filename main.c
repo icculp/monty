@@ -1,5 +1,5 @@
 #include "monty.h"
-#include "variables.h"
+#include "variables.h"\
 
 /**
 * main - Main file of monty interpreter program
@@ -61,5 +61,5 @@ int main(int ac, char **av)
 	}
 	free(buff);
 	free(margs);
-	exit(EXIT_SUCCESS);
+	return(EXIT_SUCCESS);
 }
