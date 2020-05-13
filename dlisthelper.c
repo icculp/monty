@@ -22,7 +22,7 @@ size_t print_dlistint(const stack_t *h)
  * @n: data of each node
  * Return: address of new element or NULL
  */
-dlistint_t *add_dnodeint(stack_t **head, const int n)
+stack_t *add_dnodeint(stack_t **head, const int n)
 {
 	stack_t *new;
 

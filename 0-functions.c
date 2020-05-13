@@ -5,7 +5,7 @@
 *
 */
 
-void push(void)
+void push(stack_t **stack, unsigned int linenumber)
 {
 	int a;
 
@@ -17,15 +17,15 @@ void push(void)
 * pall - Prints all the values on the stack, starting from the top
 */
 
-void pall(void)
+void pall(stack_t **stack, unsigned int linenumber)
 {
-	stack_t *temp = stack;
+	stack_t *temp = *stack;
 
 	while (temp->next != NULL)
 		temp = temp->next;
 	while (temp != NULL)
 	{
-		printf("%s\n", temp->n);
+		printf("%d\n", temp->n);
 		temp = temp->prev;
 	}
 }
