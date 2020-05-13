@@ -21,7 +21,7 @@ int main(int ac, char **av)
 	linenumber = 1;
 	margs = malloc(sizeof(char *));
 	stack = malloc(sizeof(stack_t));
-	if (margs == NULL || stackhead == NULL)
+	if (margs == NULL || stack == NULL)
 	{
 		dprintf(STDERR, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
