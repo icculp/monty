@@ -1,9 +1,12 @@
-#ifdef MONTY_H
+#ifndef MONTY_H
 #define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#ifndef STACK
+#define STACK
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -20,32 +23,23 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
-
-/**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
- */
-typedef struct instruction_s
-{
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
+#endif
 
 /** dlisthelper.c */
-size_t print_dlistint(const dlistint_t *h);
-dlistint_t *add_dnodeint(dlistint_t **head, const int n);
-dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
-dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n);
-void free_dlistint(dlistint_t *head);
+size_t print_dlistint(const stack_t *h);
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n);
+void free_dlistint(stack_t *head);
 
 /** dlisthelper.c */
-size_t dlistint_len(const dlistint_t *h);
-dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
-int sum_dlistint(dlistint_t *head);
-int delete_dnodeint_at_index(dlistint_t **head, unsigned int index);
+size_t dlistint_len(const stack_t *h);
+stack_t *get_dnodeint_at_index(stack_t *head, unsigned int index);
+int sum_dlistint(stack_t *head);
+int delete_dnodeint_at_index(stack_t **head, unsigned int index);
+
+/** 0-functions.c */
+void push(void);
+void pall(void);
 
 #endif
