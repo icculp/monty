@@ -1,5 +1,5 @@
 #include "monty.h"
-#include "variables.h"\
+#include "variables.h"
 
 /**
 * main - Main file of monty interpreter program
@@ -32,12 +32,12 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	fd = fopen(av[1], "r");
-	if (fd = -1)
+	if (fd == NULL)
 	{
 		dprintf(2, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((line = getline(&buff, mi, fd)) != -1)
+	while ((line = getline(&buff, &len, fd)) != -1)
 	{
 		mi = 0;
 		buff[strlen(buff) - 1] = '\0';
@@ -48,12 +48,12 @@ int main(int ac, char **av)
 		margs[mi] = NULL;
 		while (op[opi].opcode != NULL)
 		{
-			if (strcmp(margs[0], op.opcode) == 0)
-				op[opi].f(stack, linenumber);
+			if (strcmp(margs[0], op[opi].opcode) == 0)
+				op[opi].f(&stack, linenumber);
 			opi++;
 			if (op[opi].opcode == NULL)
 			{
-				dprintf(STDERR, "L%d: unknown instruction %s\n", linenumber, margs[0]);
+				dprintf(2, "L%d: unknown instruction %s\n", linenumber, margs[0]);
 				exit(EXIT_FAILURE);
 			}
 		}

@@ -39,7 +39,7 @@ int sum_dlistint(stack_t *head);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 
 /** 0-functions.c */
-void push(void);
-void pall(void);
+void push(stack_t **stack, unsigned int linenumber);
+void pall(stack_t **stack, unsigned int linenumber);
 
 #endif

@@ -1,5 +1,7 @@
 #ifndef VARS_H
-#define VARS_h
+#define VARS_H
+
+#include <stdio.h>
 
 #ifndef STACK
 #define STACK
@@ -22,9 +24,11 @@ typedef struct stack_s
 
 extern char **margs;
 extern char *buff;
-extern int fd, line, len;
+extern size_t len;
 extern stack_t *stack;
-extern int linenumber;
+extern unsigned int linenumber;
+extern int line;
+extern FILE *fd;
 
 /**
  * struct instruction_s - opcode and its function
@@ -41,4 +45,4 @@ typedef struct instruction_s
 } instruction_t;
 /**extern instruction_t *op;*/
 
-#endif
+#endif VARS_H

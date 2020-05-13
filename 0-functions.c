@@ -5,21 +5,21 @@
 *
 */
 
-void push(void)
+void push(stack_t **stack, unsigned int linenumber)
 {
 	int a;
 
 	a = atoi(margs[1]);
-	add_dnodeint_end(&stack, a);
+	add_dnodeint_end(stack, a);
 }
 
 /**
 * pall - Prints all the values on the stack, starting from the top
 */
 
-void pall(void)
+void pall(stack_t **stack, unsigned int linenumber)
 {
-	stack_t *temp = stack;
+	stack_t *temp = *stack;
 
 	while (temp->next != NULL)
 		temp = temp->next;
