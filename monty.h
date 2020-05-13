@@ -5,9 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef STACK
-#define STACK
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -23,7 +20,31 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
-#endif
+
+/**
+ * struct instruction_s - opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct instruction_s
+{
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
+
+/** Global variables */
+extern char **margs;
+extern char *buff;
+extern size_t len;
+extern stack_t *stack;
+extern unsigned int linenumber;
+extern int line;
+extern FILE *fd;
+extern instruction_t op[];
 
 /** dlisthelper.c */
 size_t print_dlistint(const stack_t *h);

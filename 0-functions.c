@@ -9,6 +9,7 @@ void push(stack_t **stack, unsigned int linenumber)
 {
 	int a;
 
+	(void)linenumber;
 	a = atoi(margs[1]);
 	add_dnodeint_end(stack, a);
 }
@@ -21,6 +22,7 @@ void pall(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *temp = *stack;
 
+	(void)linenumber;
 	while (temp->next != NULL)
 		temp = temp->next;
 	while (temp != NULL)

@@ -12,15 +12,19 @@ int main(int ac, char **av)
 {
 	int mi = 0, opi = 0;
 	char *tok;
+	char **margs = malloc(sizeof(char *));
+	char *buff;
+	size_t len;
+	stack_t *stack = malloc(sizeof(stack_t));
+	unsigned int linenumber = 1;
+	int line;
+	FILE *fd;
 	instruction_t op[] = {
 	{"push", push},
 	{"pall", pall},
 	{NULL, NULL}
 	};
 
-	linenumber = 1;
-	margs = malloc(sizeof(char *));
-	stack = malloc(sizeof(stack_t));
 	if (margs == NULL || stack == NULL)
 	{
 		dprintf(2, "Error: malloc failed\n");
@@ -43,7 +47,7 @@ int main(int ac, char **av)
 		buff[strlen(buff) - 1] = '\0';
 		while((tok = strtok(buff, " ")) != NULL);
 		{
-			margs[mi++] = tok;
+			margs[mi++] = strdup(tok);
 		}
 		margs[mi] = NULL;
 		while (op[opi].opcode != NULL)

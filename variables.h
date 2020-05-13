@@ -3,8 +3,6 @@
 
 #include <stdio.h>
 
-#ifndef STACK
-#define STACK
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -14,21 +12,15 @@
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO Holberton project
  */
+/**
 typedef struct stack_s
 {
         int n;
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
-#endif
+#endif*/
 
-extern char **margs;
-extern char *buff;
-extern size_t len;
-extern stack_t *stack;
-extern unsigned int linenumber;
-extern int line;
-extern FILE *fd;
 
 /**
  * struct instruction_s - opcode and its function
@@ -38,11 +30,18 @@ extern FILE *fd;
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO Holberton project
  */
-typedef struct instruction_s
+/**typedef struct instruction_s
 {
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-/**extern instruction_t *op;*/
-
-#endif VARS_H
+extern char **margs;
+extern char *buff;
+extern size_t len;
+extern stack_t *stack;
+extern unsigned int linenumber;
+extern int line;
+extern FILE *fd;
+extern instruction_t op[];
+*/
+#endif
