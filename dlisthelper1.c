@@ -1,11 +1,12 @@
 #include "monty.h"
+#include "variables.h"
 
 /**
  * dlistint_len - returns the length of a dlistint list
  * @h: head of dlistint
  * Return: Returns number of elements in doubly linked list
  */
-size_t dlistint_len(const dlistint_t *h)
+size_t dlistint_len(const stack_t *h)
 {
 	int i = 0;
 
@@ -23,7 +24,7 @@ size_t dlistint_len(const dlistint_t *h)
  * Return: node
  */
 
-dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
+stack_t *get_dnodeint_at_index(stack_t *head, unsigned int index)
 {
 	unsigned int i;
 
@@ -38,7 +39,7 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
  * @head: head of dlist
  * Return: sum
  */
-int sum_dlistint(dlistint_t *head)
+int sum_dlistint(stack_t *head)
 {
 	int sum;
 
@@ -54,9 +55,9 @@ int sum_dlistint(dlistint_t *head)
  * Return: 1 on success, -1 on failure
  */
 
-int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
+int delete_dnodeint_at_index(stack_t **head, unsigned int index)
 {
-	dlistint_t *search = *head;
+	stack_t *search = *head;
 	unsigned int i = 0;
 
 	while (search)
