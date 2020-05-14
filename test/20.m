@@ -1,4 +1,5 @@
 push 1
-fart 2
+push -2
+push -
 fuck you
 pall
