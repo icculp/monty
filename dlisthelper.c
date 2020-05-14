@@ -119,18 +119,28 @@ stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n)
 }
 
 /**
- * free_dlistint - frees a dlist
- * @head: head of dlist
- * Return: void
+ * free_dlistint - Frees a dlistint_t list
+ * @head: Pointer to head of list
  */
+
 void free_dlistint(stack_t *head)
 {
-	stack_t *end;
+	stack_t *temp, *next;
 
-	while (head != NULL)
+	printf("a\n");
+	if (head == NULL)
 	{
-		end = head;
-		head = head->next;
-		free(end);
+		return;
 	}
+	printf("b\n");
+	temp = next = head;
+	while (next->next != NULL)
+	{
+		next = next->next;
+		printf("Temp: %d\n", temp->n);
+		free(temp);
+		printf("TEMP: %d\n", temp->n);
+		temp = next;
+	}
+	free(temp);
 }

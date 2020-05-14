@@ -6,7 +6,7 @@ push 2$
                    pall    $
 
 
-                           $
+                           
 push 4$
 
     push 5    $

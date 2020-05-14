@@ -12,7 +12,9 @@ void push(stack_t **stack, unsigned int linenumber)
 
 	(void)linenumber;
 	a = atoi(margs[1]);
+	printf("APPLE (%d)\n", a);
 	add_dnodeint_end(stack, a);
+	printf("Orange (%d)\n", a);
 }
 
 /**
@@ -25,6 +27,8 @@ void pall(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *temp = *stack;
 
+	printf("???\n");
+	print_dlistint(*stack);
 	(void)linenumber;
 	while (temp->next != NULL)
 		temp = temp->next;
@@ -33,4 +37,7 @@ void pall(stack_t **stack, unsigned int linenumber)
 		printf("%d\n", temp->n);
 		temp = temp->prev;
 	}
+	printf("TEMP: %d\n", temp->n);
+	printf("!!!\n");
+	print_dlistint(*stack);
 }
