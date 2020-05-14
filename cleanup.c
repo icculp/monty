@@ -6,8 +6,12 @@
 
 void cleanup(void)
 {
-	free(m.buff);
-	free_dlistint(m.stack);
-	free(m.margs);
-	fclose(m.fd);
+	if (m.buff != NULL)
+		free(m.buff);
+	if (m.stack != NULL)
+		free_dlistint(m.stack);
+	if (m.margs != NULL)
+		free(m.margs);
+	if (m.fd != NULL)
+		fclose(m.fd);
 }
