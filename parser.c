@@ -16,7 +16,7 @@ void montyparser(void)
 		tok = strtok(m.buff, " ");
 		if (tok == NULL || tok[0] == '#' || tok[0] == '\0')
 		{
-		        m.linenumber++;
+			m.linenumber++;
 			continue;
 		}
 		while (tok != NULL)
