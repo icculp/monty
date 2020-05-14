@@ -11,14 +11,8 @@ void push(stack_t **stack, unsigned int linenumber)
 	int a;
 
 	(void)linenumber;
-	printf("m.ln: %d\n", m.linenumber);
-	printf("mbuf: %s\n", m.buff);
-	printf("MAYBE\n");
-	printf("MARG111: %s", m.margs[0]);
 	a = atoi(m.margs[1]);
-	printf("APPLE (%d)\n", a);
 	add_dnodeint_end(stack, a);
-	printf("Orange (%d)\n", a);
 }
 
 /**
@@ -31,24 +25,17 @@ void pall(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *temp = *stack;
 
-	printf("???\n");
-/*	print_dlistint(*stack); */
 	(void)linenumber;
 	if (!temp)
 		return;
 	while (temp->next != NULL)
 		temp = temp->next;
-	printf("Pops\n");
 	while (temp->prev != NULL)
 	{
-		printf("poppy\n");
 		printf("%d\n", temp->n);
 		temp = temp->prev;
 	}
-	printf("pop\n");
-	printf("TEMPal: %d\n", temp->n);
-	printf("!!!\n");
-/*	print_dlistint(*stack); */
+	printf("%d\n", temp->n);
 }
 
 /**

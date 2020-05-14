@@ -27,14 +27,9 @@ void ops(void)
 
 		while (op[opi].opcode != NULL)
 		{
-			printf("333\n");
 			if (strcmp(m.margs[0], op[opi].opcode) == 0)
 			{
-				printf("inside\n");
-				printf("m: %s, opi: %d, ln: %d\n", m.margs[0], opi, m.linenumber);
-				printf("MARG1: %s\n", m.margs[1]);
 				op[opi].f(&m.stack, m.linenumber);
-				printf("inside2\n");
 				break;
 			}
 			opi++;
