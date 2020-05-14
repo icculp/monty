@@ -18,15 +18,6 @@ size_t print_dlistint(const stack_t *h)
 		temp = temp->next;
 	}
 	return (count);
-/**
-	const stack_t *temp = h;
-	int i = 0;
-
-	for (; h != NULL; temp = temp->next, i++)
-	{
-		printf("%d\n", temp->n);
-	}
-	return (i);*/
 }
 
 /**
@@ -69,7 +60,6 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 
 	if (head == NULL || new == NULL)
 		return (NULL);
-	printf("NN: %d\n", n);
 	new->n = n;
 	if (*head == NULL)
 	{
@@ -141,22 +131,16 @@ void free_dlistint(stack_t *head)
 {
 	stack_t *temp, *next;
 
-	printf("a\n");
 	if (head == NULL)
 	{
 		return;
 	}
-	printf("b\n");
 	temp = next = head;
 	while (next->next != NULL)
 	{
 		next = next->next;
-		printf("Temp: %d\n", temp->n);
 		free(temp);
-		printf("TEMP: %d\n", temp->n);
 		temp = next;
 	}
-	printf("c\n");
 	free(temp);
-	printf("d\n");
 }

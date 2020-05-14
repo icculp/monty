@@ -12,6 +12,7 @@ monty m;
 
 int main(int ac, char **av)
 {
+	m.linenumber = 1;
 	m.margs = malloc(sizeof(char *) * 10);
 	if (m.margs == NULL)/**|| stack == NULL)*/
 	{
@@ -32,12 +33,8 @@ int main(int ac, char **av)
 
 	montyparser();
 
-	printf("BUFF: (%s)\n", m.buff);
 	free(m.buff);
-	printf("Margs: (%s)\n", m.margs[0]);
 	free_dlistint(m.stack);
-	printf("afterfreedlist\n");
 	free(m.margs);
-	printf("afterfreemargs");
 	return (EXIT_SUCCESS);
 }
