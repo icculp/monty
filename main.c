@@ -15,7 +15,7 @@ int main(int ac, char **av)
 	m.file = NULL;
 	m.linenumber = 1;
 	m.margs = malloc(sizeof(char *) * 10);
-	if (m.margs == NULL)|| (stack == NULL))
+	if (m.margs == NULL)
 	{
 		dprintf(2, "Error: malloc failed\n");
 		cleanup();
