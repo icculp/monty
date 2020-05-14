@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int linenumber)
 		if (((n[i] < '0' || n[i] > '9') && n[i] != '-')
 		    || (n[i] == '-' &&  n[i + 1] == '\0'))
 		{
-			dprintf(2, "L%d: usage push integer\n", linenumber);
+			dprintf(2, "L%d: usage: push integer\n", linenumber);
 			cleanup();
 			exit(EXIT_FAILURE);
 		}
