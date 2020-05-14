@@ -57,9 +57,11 @@ int main(int ac, char **av)
 	while ((line = getline(&buff, &len, fd)) != -1)
 	{
 		mi = opi = 0;
+		printf("1\n");
 		buff[strlen(buff) - 1] = '\0';
 		tok = strtok(buff, " ");
-		if (tok[0] == '#')
+		printf("1.5\n");
+		if (tok == NULL || tok[0] == '#' || tok[0] == '\0')
 		{
 			linenumber++;
 			continue;
@@ -70,7 +72,12 @@ int main(int ac, char **av)
 			tok = strtok(NULL, " ");
 			mi++;
 		}
-		margs[mi] = NULL;
+		printf("2\n");
+		if (strcmp(margs[0], "") == 0)
+		{
+			linenumber++;
+			continue;
+		}
 		while (op[opi].opcode != NULL)
 		{
 			if (strcmp(margs[0], op[opi].opcode) == 0)
