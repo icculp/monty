@@ -59,7 +59,11 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	stack_t *temp;
 
 	if (head == NULL || new == NULL)
-		return (NULL);
+	{
+		dprintf(2, "Error: malloc failed\n");
+		cleanup();
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	if (*head == NULL)
 	{
