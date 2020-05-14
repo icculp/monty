@@ -8,9 +8,20 @@
 
 void push(stack_t **stack, unsigned int linenumber)
 {
-	int a;
+	int a, i = 0;
+	char *n = m.margs[1];
 
-	(void)linenumber;
+	while (m.margs[1][i])
+	{
+		if (((n[i] < '0' || n[i] > '9') && n[i] != '-')
+		|| (n[i] == '-' && i != 0))
+		{
+			dprintf(2, "L%d: usage push integer\n", linenumber);
+			cleanup();
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
 	a = atoi(m.margs[1]);
 	add_dnodeint_end(stack, a);
 }
