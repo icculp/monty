@@ -11,10 +11,10 @@ void push(stack_t **stack, unsigned int linenumber)
 	int a, i = 0;
 	char *n = m.margs[1];
 
-	while (m.margs[1][i])
+	while (n[i])
 	{
 		if (((n[i] < '0' || n[i] > '9') && n[i] != '-')
-		|| (n[i] == '-' && i != 0))
+		    || (n[i] == '-' &&  n[i + 1] == '\0'))
 		{
 			dprintf(2, "L%d: usage push integer\n", linenumber);
 			cleanup();
