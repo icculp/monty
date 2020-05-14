@@ -13,10 +13,10 @@ void push(stack_t **stack, unsigned int linenumber)
 
 	while (m.margs[1][i])
 	{
-		if (((n[i] < '0' || n[1][i] > '9') && n[1][i] != '-')
-		|| (n[1][i] == '-' && i != 0))
+		if (((n[i] < '0' || n[i] > '9') && n[i] != '-')
+		|| (n[i] == '-' && i != 0))
 		{
-			dprintf(2, "L%d: usage push integer\n", m.linenumber);
+			dprintf(2, "L%d: usage push integer\n", linenumber);
 			cleanup();
 			exit(EXIT_FAILURE);
 		}
