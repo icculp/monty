@@ -1,13 +1,28 @@
 #include "monty.h"
 
-char **margs;
-char *buff;
-size_t len;
-stack_t *stack;
-unsigned int linenumber = 1;
-int line;
-FILE *fd;
-instruction_t op[] = {
+monty m;
+
+
+/**void ops(void)
+{
+	int opi = 0;
+
+
+}*/
+
+/**
+* main - Main file of monty interpreter program
+* @ac: Arg count
+* @av: Arg array
+* Return: Success or fail
+*/
+
+int main(int ac, char **av)
+{
+	int mi = 0, opi = 0;
+	char *tok;
+/**	monty m = {NULL, NULL, 0, NULL, 1, 0, NULL};*/
+	instruction_t op[] = {
 	{"push", push},
 	{"pall", pall},
 	{"pint", pint},
@@ -24,21 +39,9 @@ instruction_t op[] = {
 	{NULL, NULL}
 	};
 
-/**
-* main - Main file of monty interpreter program
-* @ac: Arg count
-* @av: Arg array
-* Return: Success or fail
-*/
-
-int main(int ac, char **av)
-{
-	int mi = 0, opi = 0;
-	char *tok;
-
-	margs = malloc(sizeof(char *));
-	stack = malloc(sizeof(stack_t *));
-	if (margs == NULL || stack == NULL)
+	m.margs = malloc(sizeof(char *) * 10);
+	/**m.stack = NULL; malloc(sizeof(stack_t *));*/
+	if (m.margs == NULL)/**|| stack == NULL)*/
 	{
 		dprintf(2, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
@@ -48,51 +51,65 @@ int main(int ac, char **av)
 		dprintf(2, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fd = fopen(av[1], "r");
-	if (fd == NULL)
+	m.fd = fopen(av[1], "r");
+	if (m.fd == NULL)
 	{
 		dprintf(2, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((line = getline(&buff, &len, fd)) != -1)
+	while ((m.line = getline(&m.buff, &m.len, m.fd)) != -1)
 	{
 		mi = opi = 0;
-		printf("1\n");
-		buff[strlen(buff) - 1] = '\0';
-		tok = strtok(buff, " ");
+		printf("11\n");
+		m.buff[strlen(m.buff) - 1] = '\0';
+		printf("||BUFF: %s\n", m.buff);
+		tok = strtok(m.buff, " ");
 		printf("1.5\n");
+		printf("TOKKK: %s\n", tok);
+/**		printf("tok0: %c\n", tok[0]);*/
 		if (tok == NULL || tok[0] == '#' || tok[0] == '\0')
 		{
-			printf("Ln: %d\n", linenumber++);
+			printf("Ln: %d\n", m.linenumber++);
 			continue;
 		}
 		while (tok != NULL)
 		{
-			margs[mi] = tok;
+			m.margs[mi] = tok;
+			printf("margsmi: %s, mi: %d\n", m.margs[mi], mi);
 			tok = strtok(NULL, " ");
 			mi++;
+			if (mi > 2)
+				break;
 		}
-		printf("2\n");
+		printf("22\n");
+		/**ops();*/
 		while (op[opi].opcode != NULL)
 		{
-			if (strcmp(margs[0], op[opi].opcode) == 0)
+			printf("333\n");
+			if (strcmp(m.margs[0], op[opi].opcode) == 0)
 			{
-				op[opi].f(&stack, linenumber);
+				printf("inside\n");
+				printf("m: %s, opi: %d, ln: %d\n", m.margs[0], opi, m.linenumber);
+				printf("MARG1: %s\n", m.margs[1]);
+				op[opi].f(&m.stack, m.linenumber);
+				printf("inside2\n");
 				break;
 			}
 			opi++;
 			if (op[opi].opcode == NULL)
 			{
-				dprintf(2, "L%d: unknown instruction %s\n", linenumber, margs[0]);
+				dprintf(2, "L%d: unknown instruction %s\n", m.linenumber, m.margs[0]);
 				exit(EXIT_FAILURE);
 			}
 		}
-		linenumber++;
+		m.linenumber++;
 	}
-	printf("BUFF: (%s)\n", buff);
-	free(buff);
-	printf("Margs: (%s)\n", margs[1]);
-	free_dlistint(stack);
-	free(margs);
+	printf("BUFF: (%s)\n", m.buff);
+	free(m.buff);
+	printf("Margs: (%s)\n", m.margs[0]);
+	free_dlistint(m.stack);
+	printf("afterfreedlist\n");
+	free(m.margs);
+	printf("afterfreemargs");
 	return (EXIT_SUCCESS);
 }

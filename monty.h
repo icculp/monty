@@ -36,15 +36,32 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/**
+* struct monty - Holds important data
+* @
+*/
+
+typedef struct monty
+{
+	char **margs;
+	char *buff;
+	size_t len;
+	stack_t *stack;
+	unsigned int linenumber;
+	int line;
+	FILE *fd;
+} monty;
+extern monty m;
+
 /** Global variables */
-extern char **margs;
+/**extern char **margs;
 extern char *buff;
 extern size_t len;
 extern stack_t *stack;
 extern unsigned int linenumber;
 extern int line;
 extern FILE *fd;
-extern instruction_t op[];
+extern instruction_t op[];*/
 
 /** dlisthelper.c */
 size_t print_dlistint(const stack_t *h);

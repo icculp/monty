@@ -17,6 +17,7 @@ void pop(stack_t **stack, unsigned int linenumber)
 	}
 	while (temp->next != NULL)
 		temp = temp->next;
-	temp->prev->next = NULL;
+	if (temp->prev != NULL)
+		temp->prev->next = NULL;
 	free(temp);
 }
