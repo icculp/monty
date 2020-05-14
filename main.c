@@ -12,6 +12,7 @@ monty m;
 
 int main(int ac, char **av)
 {
+	m.linenumber = 1;
 	m.margs = malloc(sizeof(char *) * 10);
 	if (m.margs == NULL)/**|| stack == NULL)*/
 	{

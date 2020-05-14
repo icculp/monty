@@ -32,18 +32,23 @@ void pall(stack_t **stack, unsigned int linenumber)
 	stack_t *temp = *stack;
 
 	printf("???\n");
-	print_dlistint(*stack);
+/*	print_dlistint(*stack); */
 	(void)linenumber;
+	if (!temp)
+		return;
 	while (temp->next != NULL)
 		temp = temp->next;
+	printf("Pops\n");
 	while (temp->prev != NULL)
 	{
+		printf("poppy\n");
 		printf("%d\n", temp->n);
 		temp = temp->prev;
 	}
+	printf("pop\n");
 	printf("TEMPal: %d\n", temp->n);
 	printf("!!!\n");
-	print_dlistint(*stack);
+/*	print_dlistint(*stack); */
 }
 
 /**
@@ -86,6 +91,8 @@ void pop(stack_t **stack, unsigned int linenumber)
 	if (temp->prev != NULL)
 		temp->prev->next = NULL;
 	free(temp);
+	if (temp->prev == NULL && temp->next == NULL)
+		*stack = NULL;
 }
 
 /**
