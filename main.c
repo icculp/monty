@@ -37,7 +37,7 @@ int main(int ac, char **av)
 	char *tok;
 
 	margs = malloc(sizeof(char *));
-	stack = malloc(sizeof(stack_t));
+	stack = malloc(sizeof(stack_t *));
 	if (margs == NULL || stack == NULL)
 	{
 		dprintf(2, "Error: malloc failed\n");
@@ -63,7 +63,7 @@ int main(int ac, char **av)
 		printf("1.5\n");
 		if (tok == NULL || tok[0] == '#' || tok[0] == '\0')
 		{
-			linenumber++;
+			printf("Ln: %d\n", linenumber++);
 			continue;
 		}
 		while (tok != NULL)
@@ -73,11 +73,6 @@ int main(int ac, char **av)
 			mi++;
 		}
 		printf("2\n");
-		if (strcmp(margs[0], "") == 0)
-		{
-			linenumber++;
-			continue;
-		}
 		while (op[opi].opcode != NULL)
 		{
 			if (strcmp(margs[0], op[opi].opcode) == 0)
@@ -94,7 +89,10 @@ int main(int ac, char **av)
 		}
 		linenumber++;
 	}
+	printf("BUFF: (%s)\n", buff);
 	free(buff);
+	printf("Margs: (%s)\n", margs[1]);
+	free_dlistint(stack);
 	free(margs);
 	return (EXIT_SUCCESS);
 }
