@@ -36,6 +36,7 @@ void ops(void)
 			if (op[opi].opcode == NULL)
 			{
 				dprintf(2, "L%d: unknown instruction %s\n", m.linenumber, m.margs[0]);
+				cleanup();
 				exit(EXIT_FAILURE);
 			}
 		}
