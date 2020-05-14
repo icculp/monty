@@ -63,6 +63,13 @@ extern int line;
 extern FILE *fd;
 extern instruction_t op[];*/
 
+
+/** ops.c */
+void ops(void);
+
+/** parser.c */
+void montyparser(void);
+
 /** dlisthelper.c */
 size_t print_dlistint(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
@@ -70,47 +77,23 @@ stack_t *add_dnodeint_end(stack_t **head, const int n);
 stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n);
 void free_dlistint(stack_t *head);
 
-/** dlisthelper.c */
-size_t dlistint_len(const stack_t *h);
-stack_t *get_dnodeint_at_index(stack_t *head, unsigned int index);
-int sum_dlistint(stack_t *head);
-int delete_dnodeint_at_index(stack_t **head, unsigned int index);
-
-/** 0-functions.c */
+/** 0-3_functions.c */
 void push(stack_t **stack, unsigned int linenumber);
 void pall(stack_t **stack, unsigned int linenumber);
-
-/** 1-functions.c */
 void pint(stack_t **stack, unsigned int linenumber);
-
-/** 2-functions.c */
 void pop(stack_t **stack, unsigned int linenumber);
-
-/** 3-functions.c */
 void swap(stack_t **stack, unsigned int linenumber);
 
-/** 4-functions.c */
+/** 4-8_functions.c */
 void add(stack_t **stack, unsigned int linenumber);
-
-/** 5-functions.c */
 void nop(stack_t **stack, unsigned int linenumber);
-
-/** 6-functions.c */
 void sub(stack_t **stack, unsigned int linenumber);
-
-/** 7-functions.c */
 void div_s(stack_t **stack, unsigned int linenumber);
-
-/** 8-functions.c */
 void mul(stack_t **stack, unsigned int linenumber);
 
-/** 9-functions.c */
+/** 9-12_functions.c */
 void mod(stack_t **stack, unsigned int linenumber);
-
-/** 11-functions.c */
 void pchar(stack_t **stack, unsigned int linenumber);
-
-/** 12-functions.c */
 void pstr(stack_t **stack, unsigned int linenumber);
 
 
