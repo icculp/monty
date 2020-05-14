@@ -75,7 +75,7 @@ void pstr(stack_t **stack, unsigned int linenumber)
 		{
 			printf("\n");
 			cleanup();
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 		printf("%c", temp->n);
 		temp = temp->prev;
