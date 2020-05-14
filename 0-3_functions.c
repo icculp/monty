@@ -11,6 +11,12 @@ void push(stack_t **stack, unsigned int linenumber)
 	int a, i = 0;
 	char *n = m.margs[1];
 
+	if (!n)
+	{
+		dprintf(2, "L%d: usage: push integer\n", linenumber);
+		cleanup();
+		exit(EXIT_FAILURE);
+	}
 	while (n[i])
 	{
 		if (((n[i] < '0' || n[i] > '9') && n[i] != '-')
@@ -61,7 +67,7 @@ void pint(stack_t **stack, unsigned int linenumber)
 
 	if (temp == NULL)
 	{
-		dprintf(2, "L%d: can't pint, stack empty", linenumber);
+		dprintf(2, "L%d: can't pint, stack empty\n", linenumber);
 		cleanup();
 		exit(EXIT_FAILURE);
 	}

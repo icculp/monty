@@ -9,7 +9,7 @@ void montyparser(void)
 	int mi = 0;
 	char *tok;
 
-	while ((m.line = getline(&m.buff, &m.len, m.fd)) != -1)
+	while ((m.line = getline(&m.buff, &m.len, m.file)) != -1)
 	{
 		mi = 0;
 		m.buff[strlen(m.buff) - 1] = '\0';

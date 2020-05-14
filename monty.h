@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,7 +48,8 @@ typedef struct instruction_s
 * @stack: Linked list to hold stack
 * @linenumber: Line number of monty bytecode file
 * @line: Return value of getline
-* @fd: Pointer to filestream
+* @fd: File descriptor of opened monty bytecode file
+* @file: Pointer to filestream
 */
 
 typedef struct monty
@@ -55,7 +60,8 @@ typedef struct monty
 	stack_t *stack;
 	unsigned int linenumber;
 	int line;
-	FILE *fd;
+	int fd;
+	FILE *file;
 } monty;
 extern monty m;
 
