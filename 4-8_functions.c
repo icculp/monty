@@ -14,6 +14,7 @@ void add(stack_t **stack, unsigned int linenumber)
 	if (temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't add, stack too short\n", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	while (temp->next != NULL)
@@ -52,6 +53,7 @@ void sub(stack_t **stack, unsigned int linenumber)
 	if (temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't sub, stack too short\n", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	while (temp->next != NULL)
@@ -74,6 +76,7 @@ void div_s(stack_t **stack, unsigned int linenumber)
 	if (temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't div, stack too short\n", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	while (temp->next != NULL)
@@ -81,6 +84,7 @@ void div_s(stack_t **stack, unsigned int linenumber)
 	if (temp->n == 0)
 	{
 		dprintf(2, "L%d: division by zero\n", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	temp->prev->n /= temp->n;
@@ -101,6 +105,7 @@ void mul(stack_t **stack, unsigned int linenumber)
 	if (temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't mul, stack too short\n", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	while (temp->next != NULL)

@@ -51,6 +51,7 @@ void pint(stack_t **stack, unsigned int linenumber)
 	if (temp == NULL)
 	{
 		dprintf(2, "L%d: can't pint, stack empty", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	while (temp->next != NULL)
@@ -71,6 +72,7 @@ void pop(stack_t **stack, unsigned int linenumber)
 	if (temp == NULL)
 	{
 		dprintf(2, "L%d: can't pop an empty stack\n", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	while (temp->next != NULL)
@@ -96,6 +98,7 @@ void swap(stack_t **stack, unsigned int linenumber)
 	if (temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't swap, stack too short\n", linenumber);
+		cleanup();
 		exit(EXIT_FAILURE);
 	}
 	while (temp->next != NULL)

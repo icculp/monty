@@ -38,7 +38,13 @@ typedef struct instruction_s
 
 /**
 * struct monty - Holds important data
-* @
+* @margs: Holds monty operator arguments
+* @buff: Buffer for getline
+* @len: Int buf for getline
+* @stack: Linked list to hold stack
+* @linenumber: Line number of monty bytecode file
+* @line: Return value of getline
+* @fd: Pointer to filestream
 */
 
 typedef struct monty
@@ -53,22 +59,15 @@ typedef struct monty
 } monty;
 extern monty m;
 
-/** Global variables */
-/**extern char **margs;
-extern char *buff;
-extern size_t len;
-extern stack_t *stack;
-extern unsigned int linenumber;
-extern int line;
-extern FILE *fd;
-extern instruction_t op[];*/
-
 
 /** ops.c */
 void ops(void);
 
 /** parser.c */
 void montyparser(void);
+
+/** cleanup.c */
+void cleanup(void);
 
 /** dlisthelper.c */
 size_t print_dlistint(const stack_t *h);
@@ -95,6 +94,5 @@ void mul(stack_t **stack, unsigned int linenumber);
 void mod(stack_t **stack, unsigned int linenumber);
 void pchar(stack_t **stack, unsigned int linenumber);
 void pstr(stack_t **stack, unsigned int linenumber);
-
 
 #endif
