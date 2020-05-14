@@ -48,7 +48,6 @@ typedef struct instruction_s
 * @stack: Linked list to hold stack
 * @linenumber: Line number of monty bytecode file
 * @line: Return value of getline
-* @fd: File descriptor of opened monty bytecode file
 * @file: Pointer to filestream
 */
 
@@ -60,7 +59,6 @@ typedef struct monty
 	stack_t *stack;
 	unsigned int linenumber;
 	int line;
-	int fd;
 	FILE *file;
 } monty;
 extern monty m;
