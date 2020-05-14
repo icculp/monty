@@ -36,5 +36,6 @@ int main(int ac, char **av)
 	free(m.buff);
 	free_dlistint(m.stack);
 	free(m.margs);
+	fclose(m.fd);
 	return (EXIT_SUCCESS);
 }
