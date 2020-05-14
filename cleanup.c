@@ -12,6 +12,8 @@ void cleanup(void)
 		free_dlistint(m.stack);
 	if (m.margs != NULL)
 		free(m.margs);
-	if (m.fd != NULL)
-		fclose(m.fd);
+	if (m.fd != 0)
+		close(m.fd);
+	if (m.file != NULL)
+		fclose(m.file);
 }

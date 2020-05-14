@@ -12,7 +12,7 @@ monty m;
 
 int main(int ac, char **av)
 {
-	m.fd = NULL;
+	m.file = NULL;
 	m.linenumber = 1;
 	m.margs = malloc(sizeof(char *) * 10);
 	if (m.margs == NULL)/**|| stack == NULL)*/
@@ -27,10 +27,17 @@ int main(int ac, char **av)
 		cleanup();
 		exit(EXIT_FAILURE);
 	}
-	m.fd = fopen(av[1], "r");
-	if (m.fd == NULL)
+	m.fd = open(av[1], O_RDONLY);
+	if (m.fd < 0)
 	{
 		dprintf(2, "Error: Can't open file %s\n", av[1]);
+		cleanup();
+		exit(EXIT_FAILURE);
+	}
+	m.file = fdopen(m.fd, "r");
+	if (m.file == NULL)
+	{
+		dprintf(2, "Error: malloc failed\n");
 		cleanup();
 		exit(EXIT_FAILURE);
 	}
