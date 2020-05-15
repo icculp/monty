@@ -10,7 +10,7 @@ void mod(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *temp = *stack;
 
-	if (temp->next == NULL)
+	if (!temp || temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't mod, stack too short\n", linenumber);
 		cleanup();
@@ -18,6 +18,12 @@ void mod(stack_t **stack, unsigned int linenumber)
 	}
 	while (temp->next != NULL)
 		temp = temp->next;
+	if (temp->n == 0)
+        {
+                dprintf(2, "L%d: division by zero\n", linenumber);
+                cleanup();
+                exit(EXIT_FAILURE);
+        }
 	temp->prev->n %= temp->n;
 	temp->prev->next = NULL;
 	free(temp);

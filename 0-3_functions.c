@@ -112,7 +112,7 @@ void swap(stack_t **stack, unsigned int linenumber)
 	stack_t *temp = *stack;
 	int swap;
 
-	if (temp->next == NULL)
+	if (!temp || temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't swap, stack too short\n", linenumber);
 		cleanup();
