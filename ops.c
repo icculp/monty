@@ -25,19 +25,19 @@ void ops(void)
 	};
 
 
-		while (op[opi].opcode != NULL)
+	while (op[opi].opcode != NULL)
+	{
+		if (strcmp(m.margs[0], op[opi].opcode) == 0)
 		{
-			if (strcmp(m.margs[0], op[opi].opcode) == 0)
-			{
-				op[opi].f(&m.stack, m.linenumber);
-				break;
-			}
-			opi++;
-			if (op[opi].opcode == NULL)
-			{
-				dprintf(2, "L%d: unknown instruction %s\n", m.linenumber, m.margs[0]);
-				cleanup();
-				exit(EXIT_FAILURE);
-			}
+			op[opi].f(&m.stack, m.linenumber);
+			break;
 		}
+		opi++;
+		if (op[opi].opcode == NULL)
+		{
+			dprintf(2, "L%d: unknown instruction %s\n", m.linenumber, m.margs[0]);
+			cleanup();
+			exit(EXIT_FAILURE);
+		}
+	}
 }

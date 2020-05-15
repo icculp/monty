@@ -11,7 +11,7 @@ void add(stack_t **stack, unsigned int linenumber)
 	stack_t *temp = *stack;
 	int sum = 0;
 
-	if (temp->next == NULL)
+	if (!temp || temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't add, stack too short\n", linenumber);
 		cleanup();
@@ -50,7 +50,7 @@ void sub(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *temp = *stack;
 
-	if (temp->next == NULL)
+	if (!temp || temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't sub, stack too short\n", linenumber);
 		cleanup();
@@ -73,7 +73,7 @@ void div_s(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *temp = *stack;
 
-	if (temp->next == NULL)
+	if (!temp || temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't div, stack too short\n", linenumber);
 		cleanup();
@@ -102,7 +102,7 @@ void mul(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *temp = *stack;
 
-	if (temp->next == NULL)
+	if (!temp || temp->next == NULL)
 	{
 		dprintf(2, "L%d: can't mul, stack too short\n", linenumber);
 		cleanup();
