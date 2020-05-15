@@ -27,10 +27,16 @@ int main(int ac, char **av)
 		cleanup();
 		exit(EXIT_FAILURE);
 	}
+	if (access(av[1], R_OK) == -1)
+	{
+		dprintf(2, "Error: Can't open file %s\n", av[1]);
+		cleanup();
+		exit(EXIT_FAILURE);
+	}
 	m.file = fopen(av[1], "r");
 	if (m.file == NULL)
 	{
-		dprintf(2, "Error: Can't open file %s\n", av[1]);
+		dprintf(2, "Error: malloc failed\n");
 		cleanup();
 		exit(EXIT_FAILURE);
 	}
